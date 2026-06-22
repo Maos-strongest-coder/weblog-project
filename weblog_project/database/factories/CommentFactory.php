@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Article;
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,8 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
+            'article_id' => Article::inRandomOrder()->first()?->id ?? Article::factory(),
+            'user_id' => User::inRandomOrder()->first()?->id ?? User::factory(),
             'content' => $this->faker->sentence,
             'created_at' => $this->faker->dateTime,
         ];
