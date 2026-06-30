@@ -31,7 +31,7 @@ class LoginController extends Controller
         if ($attempt) {
             $request->session()->regenerate();
  
-            return redirect()->intended('/');
+            return redirect()->intended('/articles/my');
         }
  
         return back()->withErrors([

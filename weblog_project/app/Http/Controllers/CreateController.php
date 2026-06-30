@@ -13,7 +13,7 @@ class CreateController extends Controller
     {
         $categories = Category::orderBy('name')->get();
 
-        return view('items.create', compact('categories'));
+        return view('articles.create', compact('categories'));
 
     }
 
@@ -23,8 +23,8 @@ class CreateController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'image_path' => 'nullable|string|max:255',
-            'existing_category' => 'nullable|integer|exists:categories,id',
-            'new_category' => 'nullable|string|max:100',
+            'categories' => 'nullable|array',
+            'categories.*' => 'integer|exists:categories,id',
             'is_premium' => 'nullable|boolean',
         ]);
 
@@ -44,8 +44,9 @@ class CreateController extends Controller
         $article->content = $validated['content'];
         $article->image_path = $validated['image_path'] ?? '';
         $article->is_premium = $validated['is_premium'] ?? false;
-        $article->categories()->attach($category->id);
         $article->save();
+        $article->categories()->attach($category->id);
+        
 
         return redirect()->route('articles.show', $article->id);
     }

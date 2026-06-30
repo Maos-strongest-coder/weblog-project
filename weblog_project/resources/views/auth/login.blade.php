@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
-    <h1>Inloggen</h1>
+    <h1>Log in</h1>
 
     @if ($errors->any())
         <div class="bg-red-100 text-red-800 p-3 mb-4">
@@ -20,12 +20,12 @@
 
         <div class="mb-4">
             <label class="block">Username</label>
-            <input type="text" name="name" value="{{ old('name') }}" class="border p-2 w-full" required>
+            <input type="text" name="name" value="{{ old('name') }}" class="border p-2" required>
         </div>
 
         <div class="mb-4">
             <label class="block">Password</label>
-            <input type="password" name="password" class="border p-2 w-full" required>
+            <input type="password" name="password" class="border p-2" required>
         </div>
 
         <button type="submit" class="bg-blue-600 text-white px-4 py-2">Log in</button>
