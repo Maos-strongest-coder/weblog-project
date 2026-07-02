@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
-    <h1>Log in</h1>
+    <h1><strong>Log in</strong></h1>
 
     @if ($errors->any())
         <div class="bg-red-100 text-red-800 p-3 mb-4">

@@ -12,11 +12,17 @@
     </div>
 
     @auth
+    <div class="flex items-center gap-2">
+      <p>user status:</p>
       @if(auth()->user()->is_premium)
         <div class="inline-block bg-yellow-200 text-yellow-800 text-xs font-semibold px-2 py-1 rounded-full w-max">
           Premium
         </div>
+      @else 
+        <div class="inline-block bg-red-300 text-brown-800 text-xs font-semibold px-2 py-1 rounded-full w-max">
+          Peasant
+        </div>
       @endif
     @endauth
-
+    </div>
   </header>

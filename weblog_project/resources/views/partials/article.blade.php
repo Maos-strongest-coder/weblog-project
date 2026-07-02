@@ -6,6 +6,7 @@
                         Premium
                     </div>
                 @endif
+                
                 @if(request()->routeIs('index') || request()->routeIs('articles.my'))
                     <a href="{{ route('articles.show', $article->id) }}" class="text-xl font-bold text-blue-600 hover:text-blue-800 mb-2">
                         {{ $article->title }}
@@ -22,7 +23,11 @@
 
                 <p class="text-gray-500 text-sm mb-3">Posted on <strong>{{ $article->created_at->format('F j, Y') }}</strong></p>
 
-                @if($article->content)
+                @if(request()->routeIs('articles.show'))
+                    <p class="text-gray-700">
+                        {{ $article->content }}
+                    </p>
+                @else
                     <p class="text-gray-700 line-clamp-2">
                         {{ Str::limit($article->content, 150) }}
                     </p>
@@ -40,5 +45,12 @@
                     </a>
                 @endif
                 </div>
+
+                @if ($article->categories->isNotEmpty())
+                    @foreach($article->categories as $category)
+                    <p>#{{$category}}</p>
+                    @endforeach
+                @endif
+
             </article>
         </div>

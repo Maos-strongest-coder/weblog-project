@@ -15,6 +15,8 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/create', [CreateController::class, 'create'])->name('create')->middleware('auth');
 Route::post('/create', [CreateController::class, 'store'])->name('create.store')->middleware('auth');
 
+Route::post('/category', [CreateController::class, 'storeCategory'])->name('categories.store')->middleware('auth');
+
 Route::get('/articles/my', [ArticleController::class, 'myArticles'])->name('articles.my')->middleware('auth');
 Route::get('/articles/{article}', [ArticleController::class, 'showArticle'])->name('articles.show');
 
