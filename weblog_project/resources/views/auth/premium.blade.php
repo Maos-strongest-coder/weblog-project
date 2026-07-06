@@ -6,7 +6,7 @@
 
 <h1>Premium</h1>
 
-
+@include('partials.errors')
 
 <form method="POST" action="{{ route('premium.toggle') }}" >
     @csrf

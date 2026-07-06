@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Category;
+
 use App\Models\Article;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 
-class CreateController extends Controller
+class EditController extends Controller
 {
-    public function create()
+    public function show($id)
     {
+        $article = Article::with('categories')->findOrFail($id);
         $categories = Category::orderBy('name')->get();
 
-        return view('articles.create', compact('categories'));
-
+        return view('articles.edit', compact('article', 'categories'));
     }
 
-    public function store(Request $request)
+    public function update(Request $request, $id)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -28,9 +28,7 @@ class CreateController extends Controller
             'is_premium' => 'nullable|boolean',
         ]);
 
-        
-        $article = new Article();
-        $article->user_id = Auth::id();
+        $article = Article::findOrFail($id);
         $article->title = $validated['title'];
         $article->content = $validated['content'];
         $article->image_path = $validated['image_path'] ?? '';
@@ -38,25 +36,12 @@ class CreateController extends Controller
         $article->save();
 
         if (!empty($validated['categories'])) {
-            $article->categories()->attach($validated['categories']);
+            $article->categories()->sync($validated['categories']);
+        } else {
+            $article->categories()->detach();
         }
-        
+
         return redirect()->route('articles.show', $article->id);
     }
-
-    public function storeCategory(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-        ],
-        [
-            'name.required' => 'A category without a name is not so useful, buddy'
-        ]);
-
-        $category = Category::create([
-            'name' => trim($validated['name'])
-        ]);
-
-        return back();
-    }
 }
+
