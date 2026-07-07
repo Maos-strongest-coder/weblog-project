@@ -19,7 +19,7 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => User::inRandomOrder()->first()?->id ?? User::factory(),
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
             'image_path' => $this->faker->imageUrl(),

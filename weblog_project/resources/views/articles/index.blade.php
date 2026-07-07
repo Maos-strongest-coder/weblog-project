@@ -5,9 +5,9 @@
 @section('content')
 
     <div>
-        <h2>select categories to filter</h2>
+        
         <form action="{{ route('articles.index') }}" method="GET" class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-           
+           <h2 class="text-2xl font-bold mb-6 text-gray-800">select categories to filter</h2>
             <div class="flex flex-wrap gap-4 mb-4">
                 @foreach($categories as $category)
                     <label class="flex items-center gap-2">

@@ -18,13 +18,11 @@ class ArticleSeeder extends Seeder
     {
         $categories = Category::all();
 
-        if(isEmpty($categories)){
+        if($categories->isEmpty()){
             $categories = Category::factory(5)->create();
         }
         Article::factory(10)->create()->each(function ($article) use ($categories) {
-            $article->categories()->attach(
-                $categories->random(rand(1, 3))->pluck('id')
-            );
+            $article->categories()->attach($categories->random(rand(1, 3))->pluck('id'));
         });
     }
     

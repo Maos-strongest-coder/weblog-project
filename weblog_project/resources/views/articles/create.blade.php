@@ -5,7 +5,7 @@
 @section('content')
 <h1 class="font-bold">New Article</h1>
 
-@include('partials.errors')
+
 
 
 <form method="POST" action="{{ route('create.store') }}">

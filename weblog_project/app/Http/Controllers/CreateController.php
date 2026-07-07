@@ -47,13 +47,14 @@ class CreateController extends Controller
     public function storeCategory(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|max:255',
+            'name' => 'required|unique:categories,name|max:255',
         ],
         [
-            'name.required' => 'A category without a name is not so useful, buddy'
+            'name.required' => 'A category without a name is not so useful, buddy',
+            'name.unique' => 'This category already exists, buddy'
         ]);
 
-        $category = Category::create([
+        Category::create([
             'name' => trim($validated['name'])
         ]);
 

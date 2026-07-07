@@ -5,7 +5,7 @@
 @section('content')
 <h1 class="font-bold">Edit Article</h1>
 
-@include('partials.errors')
+
 
 <form method="POST" action="{{ route('articles.update', $article->id) }}">
     @csrf

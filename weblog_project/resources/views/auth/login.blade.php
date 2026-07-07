@@ -5,7 +5,7 @@
 @section('content')
     <h1><strong>Log in</strong></h1>
 
-    @include('partials.errors')
+    
 
     <form method="POST" action="{{ route('login') }}">
         @csrf

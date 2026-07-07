@@ -31,7 +31,7 @@ Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->nam
 Route::post('/articles/{article}/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
 
 Route::get('/premium', [PremiumController::class, 'show'])->name('premium')->middleware('auth');
-Route::post('/premium', [PremiumController::class, 'toggle'])->name('premium.toggle');
+Route::post('/premium', [PremiumController::class, 'toggle'])->name('premium.toggle')->middleware('auth');
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'authenticate']);
