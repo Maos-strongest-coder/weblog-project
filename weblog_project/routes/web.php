@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PremiumController;
 use App\Http\Controllers\EditController;
+use App\Http\Controllers\CommentController;
 
 
 
@@ -26,6 +27,8 @@ Route::get('/articles/{article}/edit', [EditController::class, 'show'])->name('a
 Route::put('/articles/{article}', [EditController::class, 'update'])->name('articles.update')->middleware('auth');
 
 Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy')->middleware('auth');
+
+Route::post('/articles/{article}/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
 
 Route::get('/premium', [PremiumController::class, 'show'])->name('premium')->middleware('auth');
 Route::post('/premium', [PremiumController::class, 'toggle'])->name('premium.toggle');
