@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1>Premium</h1>
+<h1 class="text-2xl font-bold mb-6 text-gray-800">Premium</h1>
 
 
 

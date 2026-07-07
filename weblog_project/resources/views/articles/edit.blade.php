@@ -3,7 +3,7 @@
 @section('title', 'Edit Article')
 
 @section('content')
-<h1 class="font-bold">Edit Article</h1>
+<h1  class="text-2xl font-bold mb-6 text-gray-800">Edit Article</h1>
 
 
 

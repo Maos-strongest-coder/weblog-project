@@ -3,7 +3,7 @@
 @section('title', 'Create Article Page')
 
 @section('content')
-<h1 class="font-bold">New Article</h1>
+<h1  class="text-2xl font-bold mb-6 text-gray-800">New Article</h1>
 
 
 

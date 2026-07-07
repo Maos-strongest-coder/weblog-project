@@ -3,11 +3,11 @@
       <?php $pageName = explode('.', ($currentRoute = request()->route()->getName()))[0] ?? $currentRoute; ?>
       <h1 class="text-3xl font-bold tracking-tight text-gray-900">
         @auth
-          Welcome {{ auth()->user()->name }},
+          Welcome {{ auth()->user()->name }}
         @else
-          Welcome,
+          Welcome guest 
         @endauth
-        <?php echo 'you are currently on the ' . $pageName . ' page'; ?>
+        
       </h1>
     </div>
 
